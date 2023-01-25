@@ -19,7 +19,7 @@ export const GlobalProvider = ({ children }) => {
   // Actions
   async function getTransactions() {
     try {
-      const res = await axios.get("/api/v1/transactions");
+      const res = await axios.get("/api/v1/transactions"); // Fetch transactions from the backend
       dispatch({
         type: "GET_TRANSACTIONS",
         payload: res.data.data,
@@ -50,6 +50,9 @@ export const GlobalProvider = ({ children }) => {
     <GlobalContext.Provider
       value={{
         transactions: state.transactions,
+        error: state.error,
+        loading: state.loading,
+        getTransactions,
         deleteTransaction,
         addTransaction,
       }}
