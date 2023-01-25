@@ -16,6 +16,10 @@ app.use(express.json());
 
 app.use("/api/v1/transactions", transactions);
 
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
+
 // app.get("/", (req, res) => res.send("Hello"));
 
 const PORT = process.env.PORT || 5000;
